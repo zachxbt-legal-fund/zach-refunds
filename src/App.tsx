@@ -46,7 +46,7 @@ function App() {
 
     if (chain && LIB[chain.id] && address) {
       setIsFetching(true);
-      fetch(`/${LIB[chain.id].proofsFilename}`)
+      fetch(`/zach-refunds/${LIB[chain.id].proofsFilename}`)
         .then(async (res) => {
           if (res.status !== 200) {
             throw new Error(
