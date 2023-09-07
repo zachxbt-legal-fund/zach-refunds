@@ -1,0 +1,56 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root > div[data-rk] {
+  font-family: system-ui, sans-serif;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: black;
+  color: white;
+  align-items: center;
+  gap: 24px;
+  padding-top: 10vh;
+}
+
+.heading1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.heading2 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.submit-btn {
+  padding: 8px 32px;
+  font-size: 16px;
+}
+
+.link-to-tx {
+  word-break: break-all;
+  text-decoration: underline;
+}
+
+.tx-success {
+  color: green;
+}
+
+.tx-failed {
+  color: red;
+}
+
+.error-msg {
+  color: red;
+  word-break: break-all;
+  font-size: 12px;
+}
