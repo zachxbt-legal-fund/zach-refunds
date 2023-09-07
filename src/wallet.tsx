@@ -14,22 +14,18 @@ import {
 } from "@rainbow-me/rainbowkit/wallets";
 import { type ReactNode } from "react";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { arbitrum, mainnet, polygonMumbai, zkSync } from "wagmi/chains";
+import { arbitrum, mainnet } from "wagmi/chains";
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc";
 
 const { chains, publicClient } = configureChains(
-  [mainnet, arbitrum, zkSync, polygonMumbai],
+  [mainnet, arbitrum],
   [
     jsonRpcProvider({
       rpc: (chain) => ({
         http:
-          chain.id === mainnet.id
-            ? "https://eth.llamarpc.com"
-            : chain.id === arbitrum.id
+          chain.id === arbitrum.id
             ? "https://rpc.ankr.com/arbitrum"
-            : chain.id === zkSync.id
-            ? "https://zksync.drpc.org"
-            : "https://rpc.ankr.com/polygon_mumbai",
+            : "https://eth.llamarpc.com",
       }),
     }),
   ]
@@ -42,12 +38,12 @@ const connectors = connectorsForWallets([
       injectedWallet({ chains }),
       rabbyWallet({ chains }),
       frameWallet({ chains }),
-      ledgerWallet({ chains, projectId: "52f4c9a0ddab3974d521f649e41a0d5d" }),
-      metaMaskWallet({ chains, projectId: "52f4c9a0ddab3974d521f649e41a0d5d" }),
-      rainbowWallet({ chains, projectId: "52f4c9a0ddab3974d521f649e41a0d5d" }),
+      ledgerWallet({ chains, projectId: "6cfc14dee47a36d9b983e0079d4de1ad" }),
+      metaMaskWallet({ chains, projectId: "6cfc14dee47a36d9b983e0079d4de1ad" }),
+      rainbowWallet({ chains, projectId: "6cfc14dee47a36d9b983e0079d4de1ad" }),
       walletConnectWallet({
         chains,
-        projectId: "52f4c9a0ddab3974d521f649e41a0d5d",
+        projectId: "6cfc14dee47a36d9b983e0079d4de1ad",
       }),
     ],
   },
