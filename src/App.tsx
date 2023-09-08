@@ -120,7 +120,7 @@ function App() {
 
       <button
         className="submit-btn"
-        disabled={isLoading || !isLoading2 || !write || !isConnected}
+        disabled={isLoading || isLoading2 || !write || !isConnected}
       >
         {isLoading || isLoading2 ? "Confirming..." : "Claim"}
       </button>
