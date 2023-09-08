@@ -131,6 +131,7 @@ function App() {
           href={`https://etherscan.io/tx/${data.hash}`}
           rel="noreferrer"
           className="link-to-tx"
+          style={{color:"white"}}
         >
           Transaction submitted
         </a>
