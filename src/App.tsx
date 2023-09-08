@@ -111,7 +111,7 @@ function App() {
             : ` You Receive: ${
                 isConnected
                   ? refundProofs.amount
-                    ? refundProofs.amount + " USDC"
+                    ? Number(refundProofs.amount)/1e6 + " USDC"
                     : "0 USDC"
                   : ""
               }`}
