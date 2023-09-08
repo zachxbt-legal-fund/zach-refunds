@@ -121,6 +121,7 @@ function App() {
       <button
         className="submit-btn"
         disabled={isLoading || isLoading2 || !write || !isConnected}
+        onClick={write}
       >
         {isLoading || isLoading2 ? "Confirming..." : "Claim"}
       </button>
