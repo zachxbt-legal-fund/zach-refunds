@@ -25,7 +25,7 @@ const LIB: {
     proofsFilename: "ethereum-proofs.json",
   },
   [arbitrum.id]: {
-    claimContract: "0xf33197CA64f66A36a2Ac9D02e3b954455F971761",
+    claimContract: "0xaF41b062c416d727C3721412eA0FA5AA623C3187",
     usdcContract: "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
     proofsFilename: "arbitrum-proofs.json",
   },
