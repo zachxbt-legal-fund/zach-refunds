@@ -54,3 +54,9 @@ body,
   word-break: break-all;
   font-size: 12px;
 }
+
+.warning-msg {
+  color: orange;
+  word-break: break-all;
+  font-size: 12px;
+}
