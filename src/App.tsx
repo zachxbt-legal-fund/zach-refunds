@@ -5,6 +5,8 @@ import {
   usePrepareContractWrite,
   useContractWrite,
   useWaitForTransaction,
+  useBalance,
+  useContractRead,
 } from "wagmi";
 import { refundABI } from "./refundABI";
 import "./App.css";
@@ -95,6 +97,26 @@ function App() {
     enabled: data ? true : false,
   });
 
+  const { data: balance } = useBalance({
+    address: chain && LIB[chain.id]?.claimContract,
+    token: chain && LIB[chain.id]?.usdcContract,
+  });
+
+  const claimable = refundProofs.amount
+    ? (Number(refundProofs.amount) / 1e6).toFixed(2)
+    : "0";
+
+  const insufficientBalance =
+    balance && refundProofs.amount ? +claimable > +balance.formatted : false;
+
+  const { data: claimed } = useContractRead({
+    address: chain && LIB[chain.id]?.claimContract,
+    abi: refundABI,
+    functionName: "claimed",
+    args: [address as `0x${string}`],
+    enabled: address && chain && LIB[chain.id] ? true : false,
+  });
+
   return (
     <>
       <h1 className="heading1">
@@ -111,7 +133,7 @@ function App() {
             : ` You Receive: ${
                 isConnected
                   ? refundProofs.amount
-                    ? (Number(refundProofs.amount)/1e6).toFixed(2) + " USDC"
+                    ? claimable + " USDC"
                     : "0 USDC"
                   : ""
               }`}
@@ -131,7 +153,7 @@ function App() {
           href={`https://etherscan.io/tx/${data.hash}`}
           rel="noreferrer"
           className="link-to-tx"
-          style={{color:"white"}}
+          style={{ color: "white" }}
         >
           Transaction submitted
         </a>
@@ -156,6 +178,15 @@ function App() {
             ""}
         </p>
       ) : null}
+
+      {insufficientBalance && (
+        <p className="warning-msg">
+          Claim can't be executed, DM @ZachXBT on twitter and tell him to refill
+          the contract
+        </p>
+      )}
+
+      {claimed && <p className="warning-msg">{address} has already claimed</p>}
     </>
   );
 }
